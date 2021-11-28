@@ -1,0 +1,64 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  id: Int!
+  categoryId: Int!
+  price: Int!
+  name: String!
+  slug: String!
+  category: Category!
+}
+
+type Category {
+  id: Int!
+  name: String!
+  slug: String!
+  products: [Product!]!
+}
+
+type OrderProducts {
+  orderId: Int!
+  productId: Int!
+  count: Int!
+  orders: [OrderProducts!]!
+  product: Product!
+}
+
+type Order {
+  id: Int!
+  userId: Int!
+  status: String!
+  user: User!
+  orderProducts: [OrderProducts!]!
+}
+
+type User {
+  id: Int!
+  email: String!
+  orders: [Order!]!
+}
+
+type Query {
+  findCategoryBySlug(slug: String!): [Category!]!
+  findProductBySlug(slug: String!): [Product!]!
+  signIn(email: String!): String!
+  profile: User!
+}
+
+type Mutation {
+  signUp(signUpData: SignUpDto!): String!
+  createOrder: Order!
+  addProductToOrder(payload: AddProductToOrder!): Order!
+  confirmOrder(orderId: Float!): Order!
+}
+
+input SignUpDto {
+  email: String!
+}
+
+input AddProductToOrder {
+  productId: Float!
+  orderId: Float!
+}
