@@ -18,7 +18,7 @@ import { OrdersModule } from './orders/orders.module';
       database: 'database.db',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
-      logging: true,
+      logging: false,
     }),
     CategoriesModule,
     ProductsModule,
